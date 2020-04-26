@@ -18,6 +18,8 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 
 ### H-bridge Pin Connections
 
+<img src="https://user-images.githubusercontent.com/60458206/80298837-1491da80-875e-11ea-85df-ff3aed9b673b.jpg" width="250" height="250">
+
 Arduino pin | H-bridge pin
 --- | --- |
  3.3V |  Logic for motor driver for speed information
