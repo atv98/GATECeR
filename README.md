@@ -16,7 +16,7 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 
 ## Pin Connections
 
-### H-bridge Pin Connections
+### H-bridge 
 
 <img src="https://user-images.githubusercontent.com/60458206/80298838-1491da80-875e-11ea-8c60-95a70aecbae4.jpg" width="250" height="250">
 
@@ -29,7 +29,7 @@ Arduino pin | H-bridge pin
  GPIO |  Connect to H-bridge- Motor right -
  
 
-### Temperature Sensor (TMP36)
+### TMP36
 <img src="https://user-images.githubusercontent.com/60458206/80298841-165b9e00-875e-11ea-9aec-77fbebf6c321.jpg" width="150" height="150">
 
 Arduino pin | TMP36 pin
