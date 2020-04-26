@@ -18,7 +18,7 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 
 ### H-bridge Pin Connections
 
-<img src="https://user-images.githubusercontent.com/60458206/80298837-1491da80-875e-11ea-85df-ff3aed9b673b.jpg" width="250" height="250">
+<img src="https://user-images.githubusercontent.com/60458206/80298838-1491da80-875e-11ea-8c60-95a70aecbae4.jpg" width="250" height="250">
 
 Arduino pin | H-bridge pin
 --- | --- |
@@ -30,6 +30,7 @@ Arduino pin | H-bridge pin
  
 
 ### Temperature Sensor (TMP36)
+<img src="https://user-images.githubusercontent.com/60458206/80298841-165b9e00-875e-11ea-9aec-77fbebf6c321.jpg" width="150" height="150">
 
 Arduino pin | TMP36 pin
 --- | --- |
@@ -39,6 +40,7 @@ Arduino pin | TMP36 pin
 
 
 ### uLCD 
+<img src="https://user-images.githubusercontent.com/60458206/80298841-165b9e00-875e-11ea-9aec-77fbebf6c321.jpg" width="150" height="150">
 
 Arduino pin | uLCD Header | uLCD Cable
 --- | --- | --- |
