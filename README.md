@@ -40,7 +40,7 @@ Arduino pin | TMP36 pin
 
 
 ### uLCD 
-<img src="https://user-images.githubusercontent.com/60458206/80298841-165b9e00-875e-11ea-9aec-77fbebf6c321.jpg" width="150" height="150">
+<img src="https://user-images.githubusercontent.com/60458206/80299075-93d3de00-875f-11ea-8084-a9a89f5e7474.jpg" width="150" height="150">
 
 Arduino pin | uLCD Header | uLCD Cable
 --- | --- | --- |
