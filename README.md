@@ -18,15 +18,15 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 
 ### H-bridge 
 
-<img src="https://user-images.githubusercontent.com/60458206/80547479-4e452a00-8986-11ea-904b-b4f11e91551c.jpg" width="250" height="250">
+<img src="https://user-images.githubusercontent.com/60458206/80547479-4e452a00-8986-11ea-904b-b4f11e91551c.jpg" width="150" height="150">
 
 Arduino pin | MOSFET pin | TEC
 --- | --- | --- |
  GND |JP2-2 gnd |
  GND |JP2-1 RAW |
  GPIO |  JP2-3 Control	|
-|  JP1-1 | +
-|  JP1-2 | -
+||  JP1-1 | +
+||  JP1-2 | -
  
 
 ### TMP36
