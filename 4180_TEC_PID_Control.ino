@@ -22,7 +22,7 @@ int sensorPin = 0; //the analog pin the TMP36's Vout (sense) pin is connected to
                         //the resolution is 10 mV / degree centigrade with a
                         //500 mV offset to allow for negative temperatures
 int TECPin = 9;    // MOSFET to TEC connected to digital pin 5
-
+int potPin = 1;
 //PID Control Loop Variable Initializations
 unsigned long currentTime, previousTime;
 double elapsedTime;
@@ -31,7 +31,7 @@ double e_k, e_k_minus_1, e_cm, e_r;
 // Control output, control output[k-1], setpoint
 double u_k, u_k_plus_1, setPoint;
 //Constants (TUNE THESE!) Negative gains because positive error (temp too high) means increase control output (make it colder)
-double kp = -25;
+double kp = -100;
 double ki = -0.001;
 double kd = 0; 
 /*
@@ -42,7 +42,7 @@ void setup()
 {
   Serial.begin(9600);  //Start the serial connection with the computer
                        //to view the result open the serial monitor 
-  setPoint = 9; // Main setpoint for PID Control
+  //setPoint = 9; // Main setpoint for PID Control
 }
 
 // -----------------------------
@@ -103,10 +103,10 @@ unsigned long readTmp36(int count, int delayms){
   range = high - low;
   ema = doEma(range, prevEma,30);
   prevEma = ema;
-  sprintf(buf,"readTmp36() low:%ld high:%ld avg:%ld range:%ld ema:",
-                       low,high,sum/count,range, ema);
-  Serial.print(buf);
-  Serial.println(ema,3);
+  //sprintf(buf,"readTmp36() low:%ld high:%ld avg:%ld range:%ld ema:",
+                       //low,high,sum/count,range, ema);
+  //Serial.print(buf);
+  //Serial.println(ema,3);
   return(sum/count);
 }
  
@@ -141,23 +141,26 @@ void loop()
   unsigned long t36Val = readTmp36(5,1);  // take average of 5 readings, 1 ms apart
   voltage = t36Val * t36Vin; // adjust for Vin
   voltage /= 1024.0;  // convert to volts 
-  Serial.print(voltage, 5); Serial.print(" volts, ");
+  //Serial.print(voltage, 5); Serial.print(" volts, ");
  
   //  reading == 10 mV per degree with 500 mV offset
   //  Convert to degrees C i.e. (voltage - 500mV) times 100
   float tempC = (voltage - 0.5) * 100;  
-  Serial.print(tempC); Serial.println(" C, ");
+  Serial.print(tempC); Serial.print(" C, ");
  
   // now convert to Fahrenheit
   float tempF = (tempC * 9.0 / 5.0) + 32.0;
   //Serial.print(tempF); Serial.println("  F");
 
+  //get potentiometer reading
+  int potRaw = analogRead(potPin);
+  setPoint = potRaw/1023.0 * 16-1;
+  Serial.print("setPoint:   "); Serial.print(setPoint); Serial.println(" C  ");
   // maintain TEC temperature by moderating voltage output with PWM
-  // analogWrite values from 0 to 255, MOSFET responds >75
+  // analogWrite values from 0 to 255
   double PIDout = round(computePID(tempC));
-  if(PIDout < 70) {PIDout = 70;}
   analogWrite(TECPin, PIDout); // turn TEC on
   //Serial.print("PID Value: "); Serial.print(PIDout); Serial.println("  ");
   
-  delay(250);                                     //waiting a second
+  delay(100);                                     //waiting a second
 }
