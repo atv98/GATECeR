@@ -15,8 +15,17 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 * 5V Power Supply
 
 ## Pin Connections
+### Thermoelectric Cooler (TEC)
 
-### H-bridge 
+<img src="https://user-images.githubusercontent.com/60458206/80298839-15c30780-875e-11ea-9cac-0f7238d50f6e.jpg" width="300" height="250">
+
+TEC Connectors | 5V Supply | 12V Supply
+--- | --- | --- |
+Cooler + | + 
+Cooler - | - 
+Fan + | | -
+Fan - | | +
+### MOSFET 
 
 <img src="https://user-images.githubusercontent.com/60458206/80547479-4e452a00-8986-11ea-904b-b4f11e91551c.jpg" width="150" height="150">
 
