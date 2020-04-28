@@ -7,7 +7,7 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 ## Component List
 
 * Arduino Nano Every
-* sparkfun h-bridge motor driver
+* SparkFun MOSFET
 * Adafruit Peltier Thermo-Electric Cooler
 * TMP36 temperature sensor
 * uLCD-144-G2
