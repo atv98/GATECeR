@@ -62,8 +62,8 @@ P11 | Reset | Reset
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
 https://www.sparkfun.com/products/15590
-### sparkfun h-bridge motor driver
-https://www.sparkfun.com/products/14450
+### SparkFun MOSFET
+https://www.sparkfun.com/products/12959
 ### Adafruit Peltier Thermo-Electric Cooler
 https://www.adafruit.com/product/1335
 ### TMP36
