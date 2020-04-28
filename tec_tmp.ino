@@ -18,10 +18,10 @@
 //
 //TMP36 Pin Variables
 //
-int sensorPin = 0; //the analog pin the TMP36's Vout (sense) pin is connected to
+int sensorPin = A0; //the analog pin the TMP36's Vout (sense) pin is connected to
                         //the resolution is 10 mV / degree centigrade with a
                         //500 mV offset to allow for negative temperatures
-int TECPin = 9;    // MOSFET to TEC connected to digital pin 5
+int TECPin = 9;    // MOSFET to TEC connected to digital pin 9
 
  
 /*
@@ -100,22 +100,24 @@ unsigned long readTmp36(int count, int delayms){
 }
  
 unsigned long t36val;
-float t36Vin = 5.0; // for tmp36 Vin of 3.3v use 3.3
+float t36Vin = 3.3; // for tmp36 Vin of 3.3v use 3.3
 float voltage = 0.0;
 int PWMvalue = 70; // what PWM value to send out (0 to 255)
-float setTemp = 14.0; // what temperature (in degC) to hold at (+/- offset)
+float setTemp = 4.0; // what temperature (in degC) to hold at (+/- offset)
 float offset = 1.0;   // how many degC to allow +/- range around
+float misCal = 0.0;  // degC temperature offset to account for miscalibration
 
 void loop()          
 {
-  unsigned long t36Val = readTmp36(5,1);  // take average of 5 readings, 1 ms apart
-  voltage = t36Val * t36Vin; // adjust for Vin
-  voltage /= 1024.0;  // convert to volts 
+  unsigned long t36Val = readTmp36(100,1);  // take average of 100 readings, 1 ms apart
+//  voltage = t36Val * t36Vin; // adjust for Vin
+//  voltage /= 1024.0;  // convert to volts 
+  voltage = t36Val * 0.004882814; // convert analog reading to millivolts (value from SparkFun)
   Serial.print(voltage, 5); Serial.print(" volts, ");
  
   //  reading == 10 mV per degree with 500 mV offset
   //  Convert to degrees C i.e. (voltage - 500mV) times 100
-  float tempC = (voltage - 0.5) * 100;  
+  float tempC = ((voltage - 0.5) * 100) + misCal;  
   Serial.print(tempC); Serial.print(" C, ");
  
   // now convert to Fahrenheit
@@ -127,7 +129,7 @@ void loop()
   analogWrite(TECPin, PWMvalue); // turn TEC on
   if (tempC >= (setTemp + offset) && PWMvalue < 255) {
     PWMvalue = PWMvalue + 1;
-  } else if (tempC <= (setTemp - offset) && PWMvalue > 70) {
+  } else if (tempC <= (setTemp - offset) && PWMvalue > 0) {
     PWMvalue = PWMvalue - 1;
   }
   Serial.print("PWM Value: "); Serial.print(PWMvalue); Serial.println("  ");
