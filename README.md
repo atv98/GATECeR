@@ -112,6 +112,8 @@ TX |  RX |
 RX |  TX |
 RES| D3 |
 
+## Problems Faced
+
 ## Future Improvements
 
 One potential improvement that could be implemented is to power the entire system using a single 12V power supply, which can be done through a number of voltage regulator ICs allowing the Arduino nano board and the uLCD display to power off 5V and the TEC off 12V.
@@ -119,6 +121,8 @@ One potential improvement that could be implemented is to power the entire syste
 Another improvement could be to refine the use of the delay() function calls used in the software that forces the entire program to halt for periods of time. This could be done using interrupts or through Arduino's RTOS capibilities whereby one thread is used for temperature aquistion, one for updating the uLCD display and a third for controlling the TEC.
 
 ## Video Link 
+
+www.youtube.com
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
