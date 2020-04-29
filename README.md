@@ -133,16 +133,15 @@ Another improvement could be to refine the use of the delay() function calls use
 
 ## Video Links
 
-Presentation:
-
+### Presentation:
 BlueJeans Presentation Recording: https://bluejeans.com/s/D8p4b
 
 [Alternate] Youtube Presentation: https://youtu.be/ikx0H42VAZE
 
 
-Demonstration:
-
+### Demonstration:
 YouTube Demonstration: https://youtu.be/SU1SXLJOUXU
+
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
