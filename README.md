@@ -16,7 +16,13 @@ The PID control equation is as follows:
     error = Setpoint - Sensor Measurement
     ControlOutput = Kp * (error) + Ki * (cumulative error) + Kd * (error rate of change)
 
-and is realized by the computePID(sensor reading) function. 
+and is realized by the computePID(sensor reading) function. Its principal parameters Kp, Ki, and Kd are manually tuned by trial and error according to the general guideline:
+
+    1) Increase Kp until the response reaches an acceptable steady state neighborhood of the setpoint, either above or below it.
+    2) Increase Ki until the response eliminates its steady state error, but before the output begins to steadily oscillate.
+    3) Increase Kd if desired; it can sometimes mitigate over/undershoot severity. Be careful! It is susceptible to noisy sensors.
+
+Using this process, the TEC PID loop was tuned to the following gains: Kp = -100, Ki = -0.001, Kd = -0.01. If you're recreating this project, your mileage with these gains may vary depending on your setup and power supply.
 
 ## Component List
 
