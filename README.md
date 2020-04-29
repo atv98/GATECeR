@@ -119,7 +119,11 @@ TX |  RX |
 RX |  TX |
 RES| D3 |
 
-## Problems Faced
+## Challenges Overcome
+
+If you're recreating this project, make sure to look out for these potential problems that we had to solve:
+
+The TMP36 is a finicky sensor. It can run off of 5 or 3.3V, but we were only able to get sensor values calibrated correctly at 5V, though 3.3 is theoretically less noisy. Additionally, if you wire V+ and GND backwards on the sensor, it will fry pretty quickly.
 
 ## Future Improvements
 
