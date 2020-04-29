@@ -3,10 +3,13 @@
 ## Overview
 
 Software control of a thermoelectric cooler (TEC), also know as a Peltier device, to maintain a desired temperature.  One or more temperature sensors will provide input to determine a variable power output level to the TEC to maintain the set temperature.  The TEC draws far more power than the controller boards (e.g. mbed, Arduino, etc.) can output and will be connected via a MOSFET, H-Bridge, or similar circuit.  Temperature readings and power levels will be displayed on an LCD screen for ease of use.
+
+## System Schematic
+
 ## System Specification
 ### Temperature sensor (TMP36)
-### Thermoelectric Cooler
-###  Proportional, Integral, Derivative (PID) control
+### Thermo-Electric Cooler
+### Proportional, Integral, Derivative (PID) control
 ## Component List
 
 * Arduino Nano Every
@@ -17,8 +20,10 @@ Software control of a thermoelectric cooler (TEC), also know as a Peltier device
 * 12V Power Supply
 * 5V Power Supply
 
+
+
 ## Pin Connections
-### Thermoelectric Cooler (TEC)
+### Thermo-Electric Cooler (TEC)
 
 <img src="https://user-images.githubusercontent.com/60458206/80298839-15c30780-875e-11ea-9cac-0f7238d50f6e.jpg" width="300" height="250">
 
@@ -61,6 +66,13 @@ GND |  GND | GND
  TX = P9 |  RX | TX
 RX = P10 |  TX | RX
 P11 | Reset | Reset
+
+## Problems Faced
+
+## Future Work
+
+## Video 
+
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
