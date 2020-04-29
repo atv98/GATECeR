@@ -52,7 +52,7 @@ Using this process, the TEC PID loop was tuned to the following gains: Kp = -100
 
 ### Thermo-electric Cooler
 
-The Adafruit Thermo-electric cooler consists of a peltier module connected to one of the Arduino's PWM enabled digital pins through a power MOSFET powering the module with 12V and up to 5A. The amount of cooling is controlled by the PID algorithm implementation described early in order to maintain desired temperature. The heat sink module is also powered by the same 12V/5A power supply.
+The Adafruit Thermo-electric cooler consists of a peltier module connected to one of the Arduino's PWM enabled digital pins through a power MOSFET powering the module with 12V and up to 5A. The amount of cooling is controlled by the PID algorithm described earlier in order to maintain desired temperature. The heat sink module is also powered by the same 12V/5A power supply.
 
 
 ## Pin Connections
