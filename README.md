@@ -3,11 +3,37 @@
 ## Overview
 
 Software control of a thermo-electric cooler (TEC), also know as a Peltier device, to maintain a desired temperature.  A temperature sensor provides input to determine a variable power output level to the TEC to maintain the set temperature.  The TEC draws far more power than the Arduino controller board can output and is connected via a MOSFET power controller (could use a H-Bridge, or similar circuit, with sufficent amperage handling).  Temperature readings and power levels are displayed on an LCD screen for ease of use.
+## Component List
+
+* Arduino Nano Every
+* Adafruit Peltier Thermo-Electric Cooler Module+Heatsink Assembly - 12V 5A (Part 1335)
+* SparkFun MOSFET Power Control Kit (Part COM-12959)
+* Analog Devices Low Voltage Temperature Sensor (TMP36)
+* SparkFun Trimpot 10K Ohm with Knob (Part COM-09806)
+* 4D Systems 1.44" Display Module (uLCD-144-G2)
+* Generic 12V/5A Power Supply
+* Generic 5V/1A Power Supply
+* assorted electronics (e.g. breadboard, on/off switch, power connector, wires)
 
 ## System Specification
-### Thermo-electric cooler
-### Temperature sensor
-### Proportional, Integral, Derivative (PID) control
+
+### Temperature Sensor
+
+The TMP36 sensor is connected to one of the Arduino's analog input, ranging from 0 to 1023 which is converted to temperature values through the following equations:
+
+    raw value = digital output * operating voltage / 1024
+    tempC = (raw value - 0.5) * 100
+    tempF = (tempC * 9.0 / 5.0) + 32.0
+    
+To reduce noise in the temperature readings, two methods in both hardware and software were utlilised. Firstly, a 0.1uF capacitor is connected to create a low pass filter, elimintating high frequency noise. Secondly, the raw input is scaled by a carefully callibrated factor and summed with the previous input value, decreasing the overall impact of the added noise but still maintaining accurate temperature determination.
+
+The following equation illustrates this:
+
+    new temp = prev temp + (raw temp - prev temp) * scaling
+    
+When recreating this, the scaling factor may vary depending on your setup.
+
+### Proportional, Integral, Derivative (PID) Control
 
 Arduino's PWM outputs are controlled using the analogWrite(pinName, value) function, which accepts a value from 0 (0%) to 255 (100%). The TEC's PWM output is set by a Proportional-Integral-Derivative (PID) control loop using smoothed temperature feedback from the TMP36.
 
@@ -24,17 +50,10 @@ and is realized by the computePID(sensor reading) function. Its principal parame
 
 Using this process, the TEC PID loop was tuned to the following gains: Kp = -100, Ki = -0.001, Kd = -0.01. If you're recreating this project, your mileage with these gains may vary depending on your setup and power supply.
 
-## Component List
+### Thermo-electric Cooler
 
-* Arduino Nano Every
-* Adafruit Peltier Thermo-Electric Cooler Module+Heatsink Assembly - 12V 5A (Part 1335)
-* SparkFun MOSFET Power Control Kit (Part COM-12959)
-* Analog Devices Low Voltage Temperature Sensor (TMP36)
-* SparkFun Trimpot 10K Ohm with Knob (Part COM-09806)
-* 4D Systems 1.44" Display Module (uLCD-144-G2)
-* Generic 12V/5A Power Supply
-* Generic 5V/1A Power Supply
-* assorted electronics (e.g. breadboard, on/off switch, power connector, wires)
+The Adafruit Thermo-electric cooler consists of a peltier module connected to one of the Arduino's PWM enabled digital pins through a power MOSFET powering the module with 12V and up to 5A. The amount of cooling is controlled by the PID algorithm implementation described early in order to maintain desired temperature. The heat sink module is also powered by the same 12V/5A power supply.
+
 
 ## Pin Connections
 ### Thermo-electric Cooler (TEC) Assembly
@@ -56,7 +75,7 @@ MOSFET pin | Arduino pin | TEC | 12V Supply
 :---:|:---:|:---:|:---:|
 JP2-1 RAW ||| +
 JP2-2 GND | GND || -
-JP2-3 Control	| GPIO ||  
+JP2-3 Control	| D9 ||  
 JP1-1 || Cooler + |
 JP1-2 || Cooler - |
  
@@ -68,7 +87,7 @@ TMP36 pin| Arduino pin
 :---:|:---:|
  GND |  GND
  Vs | Vout (3.3V)
- Vout | GPIO
+ Vout | A0
 
 
 ### 4D Systems 1.44" Display Module (uLCD-144-G2)
@@ -80,7 +99,7 @@ uLCD | Arduino pin | 5V Supply
 GND |  GND | -
 TX |  RX |
 RX |  TX |
-RES| GPIO |
+RES| D3 |
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
