@@ -38,8 +38,8 @@ Fan - | | -
 
 MOSFET pin | Arduino pin | TEC | 12V Supply
 :---:|:---:|:---:|:---:|
-JP2-2 GND | GND|| -
 JP2-1 RAW ||| +
+JP2-2 GND | GND || -
 JP2-3 Control	| GPIO ||  
 JP1-1 || Cooler + |
 JP1-2 || Cooler - |
@@ -72,13 +72,22 @@ https://www.sparkfun.com/products/15590
 ### Adafruit Peltier Thermo-Electric Cooler Assembly
 https://www.adafruit.com/product/1335
 ### SparkFun MOSFET Power Control Kit
+https://cdn.sparkfun.com/datasheets/Components/General/RFP30N06LE.pdf
+
 https://www.sparkfun.com/products/12959
 ### Analog Devices Low Voltage Temperature Sensor (TMP36)
 http://www.analog.com/media/en/technical-documentation/data-sheets/TMP35_36_37.pdf
+
 https://www.sparkfun.com/products/10988
 ### SparkFun Trimpot 10K Ohm with Knob
+http://www.sparkfun.com/datasheets/Components/General/TSR-3386.pdf
+
 https://www.sparkfun.com/products/9806
 ### 4D Systems 1.44" Display Module (uLCD-144-G2)
+https://4dsystems.com.au/mwdownloads/download/link/id/261/
+
+https://4dsystems.com.au/ulcd-144-g2
+
 https://www.sparkfun.com/products/11377
 
 
