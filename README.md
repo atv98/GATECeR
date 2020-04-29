@@ -69,7 +69,7 @@ The Adafruit Thermo-electric cooler consists of a peltier module connected to on
 
 The uLCD display runs off a 5V supply and utilizes the only two RX and TX pins of the Arduino Nano Every board as well as any digital pin for the reset pin. It is used to display the desired temperature, current temperature as well as the PWM value currently set by the PID controller.
 
-If you are recreating this project, the 4DGL-uLCD-SE zip folder found in this repository to be uploaded to the arduino compiler that you are using. This can be done from the top down menu following this specified path:
+If you are recreating this project, the 4DGL-uLCD-SE zip folder found in this repository needs to be uploaded to the Arduino compiler that you are using. This can be done from the IDE menu following this specified path:
 
     sketch\ include library\ add .ZIP library
     
@@ -123,11 +123,17 @@ RES| D3 |
 
 If you're recreating this project, make sure to look out for these potential problems that we had to solve:
 
-The TMP36 is a finicky sensor. It can run off of 5 or 3.3V, but we were only able to get sensor values calibrated correctly at 5V, though 3.3 is theoretically less noisy. Additionally, if you wire V+ and GND backwards on the sensor, it will fry pretty quickly.
+The TMP36 is a finicky sensor. It can run off of 5 or 3.3V, but we were only able to get sensor values calibrated correctly at 5V, though 3.3 is theoretically less noisy. Additionally, if you wire V+ and GND backwards on the sensor, it will fry pretty quickly. Pay attention to orientation.
+
+Compared to an Arduino, the TEC assembly uses a lot of current. That current is sufficient to melt smaller jumper wires, breakout boards, and breadboards. Keeping wires shorts help, as does using larger gage wires. 22 gauge solid core wires were used for the power connections to the TEC. If you use the SparkFun MOSFET Power Control Kit as in this project, keep a close eye on it. The included MOSFET is rated for 60A, however, the traces on the breakout board are only rated for 3A!
+
+Do not believe everything you read on the Internet. There is a pinout diagram for the Arduino Nano Every circulating that shows an included DAC which would have been useful for this project. However, that pinout appears created based on a preliminary datasheeet for the ATmega4809 microprocessor that included an external DAC connection. The final datasheet shows none, and the Arduino Nano Every does not include such.
+
+Do not believe everything you read on the Internet, part II. 4D Systems provides several sample programs to test the uLCD-144-G2. They include setting the reset pin high to reset and low to unReset. At least in this project, the opposite was true. When something that otherwise works refuses to work after hours of testing, start trying other things safely. You might just find your bits flipped too.
 
 ## Future Improvements
 
-One potential improvement that could be implemented is to power the entire system using a single 12V power supply, which can be done through a number of voltage regulator ICs allowing the Arduino nano board and the uLCD display to power off 5V and the TEC off 12V.
+One potential improvement that could be implemented is to power the entire system using a single 12V power supply, which can be done through a number of voltage regulator ICs allowing the Arduino Nano board and the uLCD display safely receiving the 5V they need with the TEC getting the 12V it will use.
 
 Another improvement could be to refine the use of the delay() function calls used in the software that forces the entire program to halt for periods of time. This could be done using interrupts or through Arduino's RTOS capibilities whereby one thread is used for temperature aquistion, one for updating the uLCD display and a third for controlling the TEC.
 
