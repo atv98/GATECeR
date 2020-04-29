@@ -9,14 +9,14 @@ Software control of a thermo-electric cooler (TEC), also know as a Peltier devic
 ### Temperature sensor
 ### Proportional, Integral, Derivative (PID) control
 
-Arduino's PWM outputs are controlled using the analogWrite(pinName, value) function, which accepts a value from 0 (0%) to 255 (100%). The TEC's PWM output is set by a Proportional-Integral-Derivative (PID) control loop using smoothed temperature feedback from the TMP36.
+Arduino's PWM outputs are controlled using the 'analogWrite(pinName, value)' function, which accepts a value from 0 (0%) to 255 (100%). The TEC's PWM output is set by a Proportional-Integral-Derivative (PID) control loop using smoothed temperature feedback from the TMP36.
 
 The PID control equation is as follows:
 
     error = Setpoint - Sensor Measurement
     ControlOutput = Kp * (error) + Ki * (cumulative error) + Kd * (error rate of change)
 
-and is realized by the computePID(sensor reading) function. Its principal parameters Kp, Ki, and Kd are manually tuned by trial and error according to the general guideline:
+and is realized by the 'computePID(sensor reading)' function. Its principal parameters Kp, Ki, and Kd are manually tuned by trial and error according to the general guideline:
 
     1) Increase Kp until the response reaches an acceptable steady state neighborhood of the setpoint, either above or below it.
     2) Increase Ki until the response eliminates its steady state error, but before the output begins to steadily oscillate.
