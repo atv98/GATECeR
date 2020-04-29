@@ -1,3 +1,17 @@
+// Generic Arduino Thermoelectric Cooler Regulator (GATECeR)
+// 2020-04-29 - ver 1.0
+//
+// Built using:
+// Arduino Nano Every
+// Adafruit Peltier Thermo-Electric Cooler Module+Heatsink Assembly - 12V 5A (Part 1335)
+// Analog Devices Low Voltage Temperature Sensor (TMP36)
+// SparkFun MOSFET Power Control Kit (Part COM-12959) [includes Harris RFP30N06LE MOSFET]
+// 4D Systems 1.44" Display Module (uLCD-144-G2)
+// SparkFun Trimpot 10K Ohm with Knob (Part COM-09806)
+// Generic 12V/5A power supply unit
+// assorted electronics (e.g. breadboard, on/off switch, power connector, wires)
+//
+
 //
 //  uLCD pinout:    lower row of five pins along bottom edge of board,
 //
@@ -5,11 +19,11 @@
 //                           [    uLCD   ]
 //                           -------------
 //                           |  |  |  |  |
-//                           |  |  |  |  +----- RES -----------> digital pin
+//                           |  |  |  |  +----- RES -----------> uLCDPin
 //                           |  |  |  +----- GND --------------> GND
 //                           |  |  +----- RX ------------------> TX
 //                           |  +----- TX ---------------------> RX
-//                           +----- Vin -----------------------> +5Vtemp
+//                           +----- Vin -----------------------> +5V
 //
 //
 //uLCD libraries
@@ -38,7 +52,7 @@ int uLCDPin = 3;    // uLCD reset connected to pin 3 (as digital)
 //                           [tmp36]
 //                           -------
 //                           |  |  |
-//                           |  |  +----- Vin -----------> +5v)
+//                           |  |  +----- Vin -----------> +5V
 //                           |  +----- Vout (0 - 5v) ----> A/D
 //                           |     |
 //                           |     |
@@ -55,8 +69,31 @@ int sensorPin = 0; //the analog pin the TMP36's Vout (sense) pin is connected to
                         //the resolution is 10 mV / degree centigrade with a
                         //500 mV offset to allow for negative temperatures
 
-                        
-int TECPin = 9;    // MOSFET to TEC connected to digital pin 5
+
+//
+//  MOSFET control board (to TEC) pinout:    with flat side facing & leads pointing down,
+//
+//
+//                            +------- - ----------------> TEC black wire
+//                            |   +------ + -------------> TEC red wire  
+//                            |   |
+//                           -------
+//                           [MOSFET]
+//                           -------
+//                           |  |  |
+//                           |  |  +----- + -------------> +12V
+//                           |  +----- - ----------------> GND
+//                           +----- C -------------------> TECPin 
+//
+//
+//
+//MOSFET control board (to TEC) Pin Variables
+//
+
+int TECPin = 9;    // MOSFET to TEC connected to digital pin 9
+
+
+
 int potPin = 1;    // Potentiometer on A1
  
 /*
