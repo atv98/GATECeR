@@ -151,6 +151,6 @@ https://www.sparkfun.com/products/11377
 
 ## Authors
 
-* Ryan Khan
-* David Thompson
-* An Vo
+* Ryan Khan - EE
+* David Thompson - EE
+* An Vo - EE
