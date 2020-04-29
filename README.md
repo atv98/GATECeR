@@ -135,7 +135,7 @@ Another improvement could be to refine the use of the delay() function calls use
 
 BlueJeans Presentation Recording: https://bluejeans.com/s/D8p4b
 
-Youtube Presentation: 
+Youtube Presentation Recording: https://youtu.be/ikx0H42VAZE
 
 Youtube Demo: www.youtube.com
 
