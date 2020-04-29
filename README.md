@@ -65,7 +65,14 @@ Using this process, the TEC PID loop was tuned to the following gains: Kp = -100
 
 The Adafruit Thermo-electric cooler consists of a peltier module connected to one of the Arduino's PWM enabled digital pins through a power MOSFET powering the module with 12V and up to 5A. The amount of cooling is controlled by the PID algorithm described earlier in order to maintain desired temperature. The heat sink module is also powered by the same 12V/5A power supply.
 
+### uLCD Display
 
+The uLCD display runs off a 5V supply and utilizes the only two RX and TX pins of the Arduino Nano Every board as well as any digital pin for the reset pin. It is used to display the desired temperature, current temperature as well as the PWM value currently set by the PID controller.
+
+If you are recreating this project, the 4DGL-uLCD-SE zip folder found in this repository to be uploaded to the arduino compiler that you are using. This can be done from the top down menu following this specified path:
+
+    sketch\ include library\ add .ZIP library
+    
 ## Pin Connections
 ### Thermo-electric Cooler (TEC) Assembly
 
