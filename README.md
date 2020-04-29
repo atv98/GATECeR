@@ -22,7 +22,7 @@ Software control of a thermo-electric cooler (TEC), also know as a Peltier devic
 ## System Design Schematic
 
 <p align="center"> 
-<img src="https://user-images.githubusercontent.com/60458206/80570553-fe3b8700-89c8-11ea-8aed-c641bf1908ec.png" width="600" height="450">
+<img src="https://user-images.githubusercontent.com/60458206/80570553-fe3b8700-89c8-11ea-8aed-c641bf1908ec.png" width="1000" height="650">
 </p>
 
 ## System Specification
