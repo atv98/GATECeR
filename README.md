@@ -144,12 +144,13 @@ Another improvement could be to refine the use of the delay() function calls use
 ### Presentation:
 BlueJeans Presentation Recording: https://bluejeans.com/s/D8p4b
 
-[Alternate] Youtube Presentation: https://youtu.be/ikx0H42VAZE
+[Alternate Link] Youtube Presentation: https://youtu.be/ikx0H42VAZE
 
 
 ### Demonstration:
 YouTube Demonstration: https://youtu.be/SU1SXLJOUXU
 
+[Bonus - 21 sec] YouTube Supercooled Water Demo: https://youtu.be/pr9UDZsbhZ8 
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
