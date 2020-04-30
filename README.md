@@ -123,6 +123,8 @@ RES| D3 |
 
 If you're recreating this project, make sure to look out for these potential problems that we had to solve:
 
+Eventhough a capacitor was connected to form a low pass filter, the cutoff frequency was not sufficient to eliminate some of the high frequency noise. This was due to a lack of capacitor values availible from our remote locations. Inititally, we took a running average of 5 readings spaced by 100ms, which didn't seem to eliminate the noise to a sufficient level, so the scaling method described previously was instead implemented.
+
 The TMP36 is a finicky sensor. It can run off of 5 or 3.3V, but we were only able to get sensor values calibrated correctly at 5V, though 3.3 is theoretically less noisy. Additionally, if you wire V+ and GND backwards on the sensor, it will fry pretty quickly. Pay attention to orientation.
 
 Compared to an Arduino, the TEC assembly uses a lot of current. That current is sufficient to melt smaller jumper wires, breakout boards, and breadboards. Keeping wires shorts help, as does using larger gage wires. 22 gauge solid core wires were used for the power connections to the TEC. If you use the SparkFun MOSFET Power Control Kit as in this project, keep a close eye on it. The included MOSFET is rated for 60A, however, the traces on the breakout board are only rated for 3A!
