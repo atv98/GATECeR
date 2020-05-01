@@ -150,7 +150,10 @@ BlueJeans Presentation Recording: https://bluejeans.com/s/D8p4b
 ### Demonstration:
 YouTube Demonstration: https://youtu.be/SU1SXLJOUXU
 
-[Bonus - 21 sec] YouTube Supercooled Water Demo: https://youtu.be/pr9UDZsbhZ8 
+[Bonus - 22 sec] YouTube Supercooled Water Demo: https://youtu.be/pr9UDZsbhZ8 
+
+[Bonus - 15 sec] YouTube Slo-mo water-to-ice Clip: https://youtu.be/LM5lOf-T3tI 
+
 
 ## Data Sheet & Product Pages
 ### Arduino Nano Every
